@@ -1,0 +1,25 @@
+version: "3.1"
+services:
+    apache:
+      build: ./apache
+      volumes:
+        - ./apache/000-default.conf:/etc/apache2/sites-available/000-default.conf
+      depends_on:
+        - db
+      network_mode: host
+
+    db:
+      image: mysql:latest
+      volumes:
+        - data-mysql:/var/lib/mysql
+        - ./db/init.sql:/data/application/init.sql
+      restart: always
+      command: mysqld --default-authentication-plugin=mysql_native_password --skip-mysqlx --init-file /data/application/init.sql
+      environment:
+        MYSQL_ROOT_PASSWORD: rootpwd
+        MYSQL_DATABASE: apachelogs
+      network_mode: host
+
+volumes:
+  data-mysql:
+    external: false
