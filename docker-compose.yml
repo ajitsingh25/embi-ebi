@@ -2,7 +2,7 @@ version: "3.1"
 services:
     apache:
       build: ./apache
-      image: apache_server
+      image: ajitsingh25/apache_server
       volumes:
         - ./apache/000-default.conf:/etc/apache2/sites-available/000-default.conf
       depends_on:
