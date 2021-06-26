@@ -1,4 +1,4 @@
-LogSQLLoginInfo mysql://httpd_user:welcome@instance-3/apachelogs
+LogSQLLoginInfo mysql://httpd_user:welcome@INSTANCE_NAME/apachelogs
 LogSQLDatabase apachelogs
 LogSQLCreateTables on
 LogSQLDBParam socketfile /var/run/mysqld/mysqld.sock
